@@ -11,6 +11,7 @@ import org.junit.runners.MethodSorters;
 import java.util.ArrayList;
 import java.util.List;
 
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 /**
@@ -148,12 +149,20 @@ public class AdministradoraTest {
         assertEquals("[A, B, C, D, E]",admin.calcularClausura(aux).toString());
 
     }
-/*
+
     @Test
     public void calcularUniverso() throws Exception {
+        Administradora administradora = Administradora.getInstance();
 
+        administradora.agregarAtributos("a");
+        //CALCULAR UNIVERSO EN ESTE CASO TIENE QUE SER A ,si la clave es A
+        ArrayList<String> string = new ArrayList<>();
+        string.add("a");
+
+        //ESTA es un funcion especial, lo que hace es comparar ,si los 2 parametros son iguales
+        assertEquals("a",administradora.calcularUniverso(string));//Esto me va a dar falso, bien
     }
-
+/*
     @Test
     public void calcularClausura() throws Exception {
 
