@@ -62,6 +62,9 @@ public class Tableaux {
         String[][] tabla = primerPaso().getPaso();
         int sizeEsquema = esquema.getEsquemas().size();
         int sizeDependenciaFuncional = dependenciaFuncionales.size();
+        //TODO VERIFICAR SI 2 LISTAS CON LOS MISMOS VALORES LO TOMAN COMO LISTA DISTINTAS
+        //SI ES ASI ,CONVERTIR LA LISTAS EN UN STRING
+        HashMap<ArrayList<String>, String> valoresReemplazo = new HashMap<ArrayList<String>, String>();
 
         while ( hayCambios && !lineaCompleta )
         {
@@ -72,10 +75,6 @@ public class Tableaux {
             {
                 DependenciaFuncional df = dependenciaFuncionales.get(indexDF);
                 indexDF++;
-
-                //TODO VERIFICAR SI 2 LISTAS CON LOS MISMOS VALORES LO TOMAN COMO LISTA DISTINTAS
-                //SI ES ASI ,CONVERTIR LA LISTAS EN UN STRING
-                HashMap<ArrayList<String>, String> valoresReemplazo = new HashMap<ArrayList<String>, String>();
 
                 ArrayList<Coordenada> cambios = new ArrayList<>();
 
@@ -101,11 +100,11 @@ public class Tableaux {
                     String componenteDeterminado = tabla[indexEsquema][posicionDeterminado];
 
                     //TODO VERIFICAR
-                    if(valoresReemplazo.containsKey(componenteDeterminante))
+                    if(valoresReemplazo.containsKey(componenteDeterminante.toString()))
                     {
                        hayCambios = true;
 
-                       String componenteDeterminadoHash = valoresReemplazo.get(componenteDeterminante);
+                       String componenteDeterminadoHash = valoresReemplazo.get(componenteDeterminante.toString());
                        if(!componenteDeterminadoHash.equals(componenteDeterminado))
                        {
                            if(componenteDeterminado.contains("A") && componenteDeterminadoHash.contains("b"))
